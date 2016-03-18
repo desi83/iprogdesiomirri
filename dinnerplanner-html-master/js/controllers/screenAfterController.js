@@ -18,13 +18,27 @@ $("#typeSearch").change(function() {
 		$(".image").click(function(){
 		var id = $(this).attr('id');
 		console.log(id);
-		console.log("hej");
 		model.addPendingDish(id);
 		$("#ScreenAfterMainView").hide();
 		$("#LasagneMainView").show();
-		})
+		view.update();
+		});
 
 	}
 
 	selectDish();
+
+	var confirmDish = function() {
+		
+		$("#confirm").click(function(){
+		var id = $(this).attr('id');
+		console.log(id);
+		model.removePendingDish();
+		model.addDishToMenu(id);
+		$("#LasagneMainView").hide();
+		$("#ScreenAfterMainView").show();
+		});
+	}
+
+	confirmDish();
 };

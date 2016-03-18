@@ -49,12 +49,9 @@
 
 
 
-<!-- ScreenAfter -->
+<!-- SelectDish/ScreenAfter -->
 <div class="container-fluid" id="screenafter">
-	<div class="row" style="background-color: rgba(200,200,200, 0.7); padding-bottom: 10px; border:2px solid black;">
-		<div class="col-md-12">
-		<h1>HOMELETTE	<em style="font-size: 16px;">	From the best chefs in the world directly in to your kitchen</em></h1></div>
-	</div>
+
 
 	<div class="row">
 		<div id="ExampleView" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;">
@@ -84,10 +81,10 @@
 			<button type="button" class="btn btn-default btn-xs" style="background-color: #B40404; border-radius: 15px; margin-left: 175px; margin-top: -20px;"><span class="glyphicon glyphicon-remove"></span></button>
 			<div class="row" style="color: #B40404; margin-left: 1px; margin-right: 1px;">
 				<div class="col-md-4" id="pendingDish" style="font-size: 12px; text-align: right; padding-left: 75px;">Pending</div>
-				<div class="col-md-4" id="pendingPrice" style="font-size: 12px; text-align: right; padding-left: 50px;">0.00</div><!--Här ska det nog vara nåt javascriptgrej-->
+				<div class="col-md-4" id="pendingPrice" style="font-size: 12px; text-align: right; padding-left: 50px;">0.00</div>
 			</div>
 			<div class="row" style="color: #B40404; border-top: 2px solid black; margin-top: 6px; margin-left: 1px; margin-right: 1px;">
-				<div class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice"></text></div><!--Här ska det nog vara nåt javascriptgrej-->
+				<div class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice"></text></div>
 			</div>
 			<button class ="confirm" type="button" class="btn btn-default" style="background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 20px;">Confirm Dinner</button>
 		</div>
@@ -116,14 +113,11 @@
 
 
 <!-- Lasagne -->
-<div class="container-fluid" id="Lasagne">
-	<div class="row" style="background-color: rgba(200,200,200, 0.7); padding-bottom: 10px; border:2px solid black;">
-		<div class="col-md-12">
-		<h1>HOMELETTE	<em style="font-size: 16px;">	From the best chefs in the world directly in to your kitchen</em></h1></div>
-	</div>
+<div class="container-fluid">
+
 
 	<div class="row">
-		<div id="ExampleView" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;">
+<!-- 		<div id="ExampleView" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;">
 			<div class="row" style="padding-top: 15px; padding-bottom: 15px; padding-left: 20px;">
 				<text><b style="font-size: 18px;">My Dinner</b></br>People</text><text class="counter" id="numberOfGuests" style="font-size: 16px; font-family: Arial; padding-left: 30px;"></text>
 						<div class="btn-group" id="guestSelect">
@@ -143,18 +137,18 @@
 			</div>
 			<div class="row" style="color: #B40404; border: 2px solid grey; margin-top: 10px; margin-left: 1px; margin-right: 1px;">
 				<div class="col-md-6" style="font-size: 12px; text-align: left;">Pending</div>
-				<div class="col-md-6" id="pendingPrice" style="font-size: 12px; text-align: right;">0.00</div><!--Här ska det nog vara nåt javascriptgrej-->
+				<div class="col-md-6" id="pendingPrice" style="font-size: 12px; text-align: right;">0.00</div>
 			</div>
 			<div class="row" style="color: #B40404; border-top: 2px solid black; margin-top: 6px; margin-left: 1px; margin-right: 1px;">
-				<div class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice">00.00</text></div><!--Här ska det nog vara nåt javascriptgrej-->
+				<div class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice">00.00</text></div>
 			</div>
 			<button class ="confirm" type="button" class="btn btn-default" style="background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 20px;">Confirm Dinner</button>
-		</div>
+		</div> -->
 		<div id="LasagneMainView">
 		<span id="dishInfo"></span>
 
 			<div class="col-md-5"style="border:2px solid black; background-color:Moccasin; padding-bottom: 20px;">
-				<h5 style="text-transform: uppercase;">Ingredients for <text id="numberOfGuests"></text> people</h5>
+				<h5 style="text-transform: uppercase;">Ingredients for <text id="numbOfGuests"></text> people</h5>
 				<div class="ingredients" style="border-top: 2px solid black; padding-top: 20px; padding-bottom: 20px;">
 				<table>
 					<span id="allIngredients"></span> 
@@ -162,7 +156,7 @@
   					<tr style="border-top: 2px solid black;">
 						<td style="padding-right: 70px;"><button type="button" id="confirm dish" class="btn btn-warning" style="margin-top: 20px;">Confirm Dish</button></td>
 						<td style="padding-left: 80px; padding-right: 10px;">SEK</td>
-						<td id="selectedPrice"><td>
+						<td id="specPrice"><td>
 					</tr>
 				</table>
 			</div>
@@ -228,7 +222,7 @@
 		</div>
 	</div>
 
-	<span id="dishInfo"></span>
+	<span id="dishInfoList"></span>
 </div>
 
     <!-- jQuery -->
@@ -236,20 +230,22 @@
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
     <script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
 
-	<!-- The application JavaScript code -->
 	<script src="js/app.js"></script>
+	<!-- The application JavaScript code -->
 	<script src="js/model/dinnerModel.js"></script>
+
 	<script src="js/view/homeView.js"></script>
 	<script src="js/view/exampleView.js"></script>
-	<script src="js/view/ScreenAfterMainView.js"></script>
-	<script src="js/view/LasagneMainView.js"></script>
+	<script src="js/view/screenAfterMainView.js"></script>
+	<script src="js/view/lasagneMainView.js"></script>
 	<script src="js/view/viewSix.js"></script>
 	<script src="js/view/viewSeven.js"></script>
 
+
 	<!-- The controllers -->
-	<script src="js/controllers/screenAfterController.js"></script>
 	<script src="js/controllers/homeController.js"></script>
-	<script src="js/controllers/LasagneController.js"></script>
+	<script src="js/controllers/screenAfterController.js"></script>
+	<script src="js/controllers/lasagneController.js"></script>
 
 
   </body>

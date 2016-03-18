@@ -3,7 +3,7 @@ var DinnerModel = function() {
 	var specMenu = [];
 	var numberOfGuests = 4;
  	var currentDish = 100;
- 	var pendingDishes = [1];
+ 	var pendingDishes = [];
  	var observers = [];
 
 // will add new observer to the array
@@ -42,8 +42,8 @@ var DinnerModel = function() {
 	}
 
 	this.addPendingDish = function(id) {
-		var pendingDish = this.getDish(id).id;
-		console.log(this.getDish(id).id);
+		var pendingDish = this.getDish(id);
+		console.log(this.getDish(id));
 		pendingDishes.push(pendingDish);
 		console.log(pendingDishes);
 		this.notifyObservers(id);
@@ -55,8 +55,8 @@ var DinnerModel = function() {
     }
 
 	this.getPendingDish = function() {
-		dishen = pendingDishes.pop();
-		return dishen;
+		//dishen = pendingDishes.pop();
+		return pendingDishes[0];
 	}
 
 	//Returns all the dishes on the menu.

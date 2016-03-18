@@ -2,6 +2,7 @@ var ScreenAfterMainView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
+console.log("hej dish")
 	this.dishImage = container.find("#dishImage");
 
 	var imagesStr = "";

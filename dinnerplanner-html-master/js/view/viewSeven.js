@@ -7,7 +7,7 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-	this.dishInfo = container.find("#dishInfo");
+	this.dishInfoList = container.find("#dishInfoList");
 
 	var imagesStr = "";
 	var getDishes = function () {
@@ -28,7 +28,7 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 		return imagesStr;
 	}
 	getDishes();
-	this.dishInfo.html(imagesStr);
+	this.dishInfoList.html(imagesStr);
 
 	this.update = function(obj) {
 	};
