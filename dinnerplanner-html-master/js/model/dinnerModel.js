@@ -1,6 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
 	var specMenu = [];
+	var fullMenu = [];
 	var numberOfGuests = 4;
  	var currentDish = 100;
  	var pendingDishes = [];
@@ -43,15 +44,12 @@ var DinnerModel = function() {
 
 	this.addPendingDish = function(id) {
 		var pendingDish = this.getDish(id);
-		console.log(this.getDish(id));
 		pendingDishes.push(pendingDish);
-		console.log(pendingDishes);
 		this.notifyObservers(id);
 	}	
 
 	this.removePendingDish = function(){
 		pendingDishes.pop(); //Tar bort det sista elemntet
-    	this.notifyObserver();
     }
 
 	this.getPendingDish = function() {
@@ -61,9 +59,8 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		var fullMenu = [];
 		for (i = 0; i < specMenu.length; i++) { //loopar igenom varje maträtt som finns i menyn
-			var dish = this.getDish(specMenu[i]); // sparar ner rätterna som finns i variabeln dish
+			var dish = this.getDish(specMenu[i].id); // sparar ner rätterna som finns i variabeln dish
 			fullMenu.push(dish); // lägger till rätten i menyn
 		}
 	return fullMenu;
@@ -88,7 +85,6 @@ var DinnerModel = function() {
 		var specPrice = 0;
 		ingredient = [];
 		ingredient.push(this.getDish(id).ingredients);
-		console.log(ingredient);
 		for(key in ingredient){
 			specPrice += ingredient[key].price;
 		}
@@ -109,28 +105,34 @@ var DinnerModel = function() {
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2 
 		var addDish = this.getDish(id);
-		for (menu = 0; menu < specMenu.length; menu++){
-			var dish = this.getDish(specMenu[menu]);
-			if (dish.type == addDish.type){
-				specMenu.splice(menu, 1 , addDish.id);
+		if (specMenu.length >= 1) {
+			for (menu = 0; menu < specMenu.length; menu++){
+				var dish = specMenu[menu];
+				if (dish.type == addDish.type){
+					this.removeDishFromMenu(addDish.id);
+				}
+				else{
+					specMenu.push(addDish);
+				}
 			}
-			else{
-				specMenu.push(addDish.id);
-			}
+		}
+		else{
+			specMenu.push(addDish);
 		}
 	return specMenu;
 	this.notifyObservers(); //ska senare skicka med ett objekt
-
-	console.log(specMenu);
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
 		var removeDish = this.getDish(id);
 		for (menu = 0; menu < specMenu.length; menu++){
-			var dish = this.getDish(specMenu[menu])
+			var dish = specMenu[menu];
 			if(removeDish.id == dish.id){ //kollar om den rätten man vill ta bort faktiskt finns i menyn, om den gör det f
-				specMenu.splice(menu, 1)
+				specMenu.splice(menu, 1);
+			}
+			else if(removeDish.type == dish.type){ //kollar om den rätten man vill ta bort faktiskt finns i menyn, om den gör det f
+				specMenu.splice(menu, 1);
 			}
 		}
 		return specMenu;

@@ -3,12 +3,10 @@ var LasagneMainView = function (container, model) {
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
 	//var id = model.getPendingDish();
-	console.log("hej lasagne");
 	this.dishInfo = container.find("#dishInfo");
 
 	var imagesStr = "";
 	var getDishes = function () {
-		console.log("hej imagesStr");
 		var imagesStr = "";
 		var dish = model.getPendingDish();
 		imagesStr = imagesStr + '<div class="col-md-5">'
@@ -24,12 +22,11 @@ var LasagneMainView = function (container, model) {
 	this.numbOfGuests.html(model.getNumberOfGuests());
 	var guests = (model.getNumberOfGuests());
 
-	this.allIngredients = container.find("#allIngredients")
+	this.allIngredients = container.find("#allIngredients");
 
 
 	var ingredientList = "";
 	var getIngredients = function () {
-		console.log("hej ingredients")
 		var dish = model.getPendingDish();
 		var ingredientList = "";
 		for(var i=0; i < dish.ingredients.length; i++){
@@ -40,8 +37,10 @@ var LasagneMainView = function (container, model) {
 		}
 		return ingredientList;
 	}
+
 	//getIngredients(100);
 	//this.allIngredients.html(ingredients);
+	$("#confirmButton").append('<button id="confirmButton" type="button" class="btn btn-warning" style="margin-top: 20px;">Confirm Dish</button>');
 
 	this.update = function() {
 		this.dishInfo.html(getDishes());
@@ -49,6 +48,7 @@ var LasagneMainView = function (container, model) {
 		this.specPrice = container.find("#specPrice");
 		var dish = model.getPendingDish().id;
 		this.specPrice.html(model.getDishPrice(dish));
+
 
 	};
 

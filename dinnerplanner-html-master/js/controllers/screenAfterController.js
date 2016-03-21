@@ -1,7 +1,6 @@
 var ScreenAfterController = function(view, model) {
 
 	$("#buttonSearch").click(function(){
-		console.log("buttonSearch");
 		view.updateSearch($("#typeSearch").val(), $("#searchWord").val());
 		selectDish();
 		$("#searchWord").val('');
@@ -22,7 +21,7 @@ $("#typeSearch").change(function() {
 		$("#ScreenAfterMainView").hide();
 		$("#LasagneMainView").show();
 		view.update();
-		});
+		})
 
 	}
 
@@ -30,11 +29,11 @@ $("#typeSearch").change(function() {
 
 	var confirmDish = function() {
 		
-		$("#confirm").click(function(){
-		var id = $(this).attr('id');
-		console.log(id);
+		$("#confirmButton").click(function(){
+		var id = model.getPendingDish().id;
 		model.removePendingDish();
 		model.addDishToMenu(id);
+		console.log(model.getFullMenu(), "hej");
 		$("#LasagneMainView").hide();
 		$("#ScreenAfterMainView").show();
 		});

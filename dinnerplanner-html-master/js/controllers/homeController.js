@@ -8,7 +8,7 @@ var HomeController = function(view, model) {
 
 $("#startButton").click(function(){
 	$("#HomeView").hide()
-	$("#ExampleView").hide()
+	$("#ExampleView").show()
 	$("#ScreenAfterMainView").show()
 	$("#LasagneMainView").hide()
 	$("#ViewSix").hide()

@@ -1,10 +1,11 @@
 var LasagneController = function(view, model) {
 
 		view.update();
+		console.log("hej controller");
 
 		var confirmDish = function() {
 		
-		$("#confirm").click(function(){
+		$("#confirmButton").click(function(){
 		var id = $(this).attr('id');
 		console.log(id);
 		model.removePendingDish();
@@ -12,6 +13,6 @@ var LasagneController = function(view, model) {
 		$("#LasagneMainView").hide();
 		$("#ScreenAfterMainView").show();
 		});
-confirmDish();
-	};
+	}
+	confirmDish();
 };

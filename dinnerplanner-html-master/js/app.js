@@ -9,16 +9,15 @@ $(function() {
 
 	var exampleView = new ExampleView($("#ExampleView"), model);
 
+	var lasagneMainView = new LasagneMainView($("#LasagneMainView"), model);
 	var screenAfterMainView = new ScreenAfterMainView($("#ScreenAfterMainView"), model);
 	var screenAfterController = new ScreenAfterController(screenAfterMainView, model);
-
-//	var lasagneController = new LasagneController(lasagneMainView, model);
 
 
 	var viewSix = new ViewSix($("#ViewSix"), model);
 	var viewSeven = new ViewSeven($("#ViewSeven"), model);
 
-	var lasagneMainView = new LasagneMainView($("#LasagneMainView"), model);
+//	var lasagneController = new LasagneController(lasagneMainView, model);
 
 	// masterController();
 

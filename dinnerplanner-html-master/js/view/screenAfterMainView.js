@@ -9,7 +9,6 @@ console.log("hej dish")
 	var getDishes = function (type, filter) {
 		//console.log($("#dishImage"));
 		var menuType = model.getAllDishes(type, filter);
-		console.log(menuType);
 		imagesStr = "";
 		for (var i=0; i < menuType.length; i++){ 
 			var dish = menuType[i];
