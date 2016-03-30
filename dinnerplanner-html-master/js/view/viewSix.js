@@ -12,7 +12,8 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 	var imagesStr = "";
 	var getDishes = function () {
 		// body...
-		var menuType = model.getFullMenu(); //alla ids för våra dishes
+		menuType = (model.getFullMenu()); //alla ids för våra dishes
+		console.log(menuType)
 		for (var i=0; i < menuType.length; i++){ 
 			var dish = menuType[i];
 			var dishprice = model.getDishPrice(dish.id);
@@ -24,12 +25,12 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 		}
 		return imagesStr;
 	}
+	
+this.update = function() {
 	getDishes();
 	this.dishInfoViewSix.html(imagesStr);
 	this.totalMenuPrice = container.find("#priceee");
 	this.totalMenuPrice.html(model.getTotalMenuPrice());
-	
-this.update = function(obj) {
 	};
 
 	model.addObserver(this);

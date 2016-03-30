@@ -47,47 +47,11 @@
 	</div>
 </div>
 
-
+<div class="container-fluid" id="screenafter">
+<div class="row">
+	<div id="ExampleView" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;"></div>
 
 <!-- SelectDish/ScreenAfter -->
-<div class="container-fluid" id="screenafter">
-
-
-	<div class="row">
-		<!-- <div id="ExampleView" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;">
-			<div class="row" style="padding-top: 15px; padding-bottom: 15px; padding-left: 20px;">
-				<text><b style="font-size: 18px;">My Dinner</b></br>People</text><text class="counter" id="numberOfGuests" style="font-size: 16px; font-family: Arial; padding-left: 30px;"></text>
-						<div class="btn-group" id="guestSelect">
-							<div id="upDown">
-								<span class="addGuest"><button type="button" id="up" class="btn btn-default btn-xs">
-									<span class="glyphicon glyphicon-chevron-up"></span>
-								</button></span>
-								<span class="subtractGuest"><button type="button" id="down" class="btn btn-default btn-xs">
-									<span class="glyphicon glyphicon-chevron-down"></span>
-								</button></span>
-							</div>
-						</div>         
-			</div>
-			<div class="row" style="background-color: rgb(180,180,180); border: 2px solid black;">
-				<div class="col-md-6" style="font-size: 12px; text-align: left;">Dish Name</div>
-				<div class="col-md-6" style="font-size: 12px; text-align: right;">Cost</div>
-			</div>
-			<div class="row" style="background-color: #D8D8D8; color: #B40404; border: 2px solid black; margin-top: 10px; margin-left: 1px; margin-right: 1px;">
-				<div class="col-md-2" id="amountOfGuests" style="font-size: 12px; text-align: left;"></div>
-				<div class="col-md-6" id="selectedDish" style="font-size: 12px; text-align: right;"></div>
-				<div class="col-md-4" id="selectedPrice" style="font-size: 12px; text-align: right;">77.20
-				</div>
-			</div>
-			<button type="button" class="btn btn-default btn-xs" style="background-color: #B40404; border-radius: 15px; margin-left: 175px; margin-top: -20px;"><span class="glyphicon glyphicon-remove"></span></button>
-			<div class="row" style="color: #B40404; margin-left: 1px; margin-right: 1px;">
-				<div class="col-md-4" id="pendingDish" style="font-size: 12px; text-align: right; padding-left: 75px;">Pending</div>
-				<div class="col-md-4" id="pendingPrice" style="font-size: 12px; text-align: right; padding-left: 50px;">0.00</div>
-			</div>
-			<div class="row" style="color: #B40404; border-top: 2px solid black; margin-top: 6px; margin-left: 1px; margin-right: 1px;">
-				<div class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice"></text></div>
-			</div>
-			<button class ="confirm" type="button" class="btn btn-default" style="background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 20px;">Confirm Dinner</button>
-		</div> -->
 
 		<div class="col-md-10" id="ScreenAfterMainView">
 			<div class="row" style="background-color: NavajoWhite; border: 2px solid black; padding-bottom: 30px; padding-top: 10px; margin-left: -15px; margin-right: -15px;"> <h4 style="border-bottom: 2px solid black; margin-left: 20px; margin-right: 20px;"><b>SELECT DISH</b></h4>
@@ -108,49 +72,18 @@
 				<span id="dishImage"></span>
 			</div>
 		</div>
-	</div>
-</div>
+
 
 
 <!-- Lasagne -->
-<div class="container-fluid">
 
-
-	<div class="row">
- 		<div id="ExampleView" class="col-md-2" style="padding-bottom: 20px; max-height: 1500px; min-height: 585px; border:2px solid black;">
-			<div class="row" style="padding-top: 15px; padding-bottom: 15px; padding-left: 20px;">
-				<text><b style="font-size: 18px;">My Dinner</b></br>People</text><text class="counter" id="numberOfGuests" style="font-size: 16px; font-family: Arial; padding-left: 30px;"></text>
-						<div class="btn-group" id="guestSelect">
-							<div id="upDown">
-								<span class="addGuest"><button type="button" id="up" class="btn btn-default btn-xs">
-									<span class="glyphicon glyphicon-chevron-up"></span>
-								</button></span>
-								<span class="subtractGuest"><button type="button" id="down" class="btn btn-default btn-xs">
-									<span class="glyphicon glyphicon-chevron-down"></span>
-								</button></span>
-							</div>
-						</div>         
-			</div>
-			<div class="row" style="background-color: rgb(180,180,180); border: 2px solid black;">
-				<div class="col-md-6" style="font-size: 12px; text-align: left;">Dish Name</div>
-				<div class="col-md-6" style="font-size: 12px; text-align: right;">Cost</div>
-			</div>
-			<div class="row" style="color: #B40404; border: 2px solid grey; margin-top: 10px; margin-left: 1px; margin-right: 1px;">
-				<div class="col-md-6" style="font-size: 12px; text-align: left;">Pending</div>
-				<div class="col-md-6" id="pendingPrice" style="font-size: 12px; text-align: right;">0.00</div>
-			</div>
-			<div class="row" style="color: #B40404; border-top: 2px solid black; margin-top: 6px; margin-left: 1px; margin-right: 1px;">
-				<div class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice">00.00</text></div>
-			</div>
-			<button class ="confirm" type="button" class="btn btn-default" style="background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 20px;">Confirm Dinner</button>
-		</div>
 		<div id="LasagneMainView">
-		<span id="dishInfo"></span>
+			<span id="dishInfo"></span>
 
 			<div class="col-md-5"style="border:2px solid black; background-color:Moccasin; padding-bottom: 20px;">
 				<h5 style="text-transform: uppercase;">Ingredients for <text id="numbOfGuests"></text> people</h5>
 				<div class="ingredients" style="border-top: 2px solid black; padding-top: 20px; padding-bottom: 20px;">
-				<table>
+					<table>
 					<span id="allIngredients"></span> 
 
   					<tr style="border-top: 2px solid black;">
@@ -163,15 +96,15 @@
 		</div>
 	</div>
 </div>
-
+</div>
 
 <!-- DinnerOverview -->
 <div class="container-fluid" id="ViewSix">
-	<div class="row" style="background-color: Gainsboro; max-height: 100px; min-height: 80px; margin-right: -15px; margin-left: -15px; border-bottom: 2px solid black; border-top: 2px solid black; padding-left: 20px; padding-top: 5px; padding-bottom: 100px;">
+<!-- 	<div class="row" style="background-color: Gainsboro; max-height: 100px; min-height: 80px; margin-right: -15px; margin-left: -15px; border-bottom: 2px solid black; border-top: 2px solid black; padding-left: 20px; padding-top: 5px; padding-bottom: 100px;">
 		<div class="col-md-12">	
 		<h1> HOMELETTE <small><em style="font-size: 16px;">From the best chefs in the world directly to your kitchen</em></small></h1>
         </div>
-	</div>
+	</div> -->
 
 
 	<div class="row" style="background-color: NavajoWhite; max-height: 80px; min-height: 30px; margin-right: -15px; margin-left: -15px; border-bottom: 2px solid black; padding-left: 20px; padding-top: 5px; padding-bottom: 60px;">
@@ -179,8 +112,8 @@
 		<div class="col-md-6">My Dinner:  <text id="numOfGuests" style="font-family: Arial;">   X</text>  People
 		</div>
 
-		<div class="col-md-6" style="padding-top: 10px;">
-			<button type="button" class="btn btn-warning btn pull-right" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px; margin-right: 20px">Go back and edit dinner</button>
+		<div class="col-md-6" id="editButton" style="padding-top: 10px;">
+			<button type="button" class="btn btn-warning btn pull-right" id="editDinner" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px; margin-right: 20px">Go back and edit dinner</button>
 		</div>
 	</div>
 
@@ -201,17 +134,17 @@
 	<div class="row" style="border-bottom: solid;"></div>
 	<div class="row">
 		<div class="col-md-12" style="text-align:center;">
-        	<button type="button" class="btn btn-primary btn-lg" style="color: black; background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 50px;">Print Full Recipe</button>
+        	<button type="button" class="btn btn-primary btn-lg"  id="printButton" style="color: black; background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 50px;">Print Full Recipe</button>
     	</div>
 	</div>
 </div>
 
 <!-- DinnerPreparation -->
 <div class="container-fluid" id="ViewSeven">
-	<div class="row" style="background-color: rgba(200,200,200, 0.7); padding-bottom: 10px; border:2px solid black;">
+<!-- 	<div class="row" style="background-color: rgba(200,200,200, 0.7); padding-bottom: 10px; border:2px solid black;">
 		<div class="col-md-12">
 		<h1>HOMELETTE	<em style="font-size: 16px;">	From the best chefs in the world directly in to your kitchen</em></h1></div>
-	</div>
+	</div> -->
 
 	<div class="row" style="background-color: NavajoWhite; padding-bottom: 5px; border:2px solid black; padding-top:5px;">
 		<div class="col-md-6">
@@ -244,9 +177,10 @@
 
 	<!-- The controllers -->
 	<script src="js/controllers/homeController.js"></script>
+	<script src="js/controllers/sidebarController.js"></script>
 	<script src="js/controllers/screenAfterController.js"></script>
 	<script src="js/controllers/lasagneController.js"></script>
-
+	<script src="js/controllers/sixController.js"></script>
 
   </body>
 </html>

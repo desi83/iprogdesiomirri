@@ -7,14 +7,18 @@ $(function() {
 	var homeView = new HomeView($("#HomeView"), model);
 	var homeController = new HomeController(homeView, model);
 
-	var exampleView = new ExampleView($("#ExampleView"), model);
 
+	var exampleView = new ExampleView($("#ExampleView"), model);
 	var lasagneMainView = new LasagneMainView($("#LasagneMainView"), model);
 	var screenAfterMainView = new ScreenAfterMainView($("#ScreenAfterMainView"), model);
-	var screenAfterController = new ScreenAfterController(screenAfterMainView, model);
+	var screenAfterController = new ScreenAfterController(screenAfterMainView, exampleView, model);
+
+	var sidebarController = new SidebarController(exampleView, model);
 
 
 	var viewSix = new ViewSix($("#ViewSix"), model);
+	var sixController = new SixController(viewSix, model);
+
 	var viewSeven = new ViewSeven($("#ViewSeven"), model);
 
 //	var lasagneController = new LasagneController(lasagneMainView, model);

@@ -1,4 +1,4 @@
-var ScreenAfterController = function(view, model) {
+var ScreenAfterController = function(view, sidebarview, model) {
 
 	$("#buttonSearch").click(function(){
 		view.updateSearch($("#typeSearch").val(), $("#searchWord").val());
@@ -16,9 +16,9 @@ $("#typeSearch").change(function() {
 		
 		$(".image").click(function(){
 		var id = $(this).attr('id');
-		console.log(id);
 		model.addPendingDish(id);
 		$("#ScreenAfterMainView").hide();
+		$("#ViewSix").hide();
 		$("#LasagneMainView").show();
 		view.update();
 		})
@@ -33,11 +33,22 @@ $("#typeSearch").change(function() {
 		var id = model.getPendingDish().id;
 		model.removePendingDish();
 		model.addDishToMenu(id);
-		console.log(model.getFullMenu(), "hej");
+		sidebarview.addDish(id);
 		$("#LasagneMainView").hide();
 		$("#ScreenAfterMainView").show();
 		});
 	}
 
 	confirmDish();
+	
+	var goBack = function() {
+		$("#backButton").click(function(){
+			console.log('hej från back')
+			$("#LasagneMainView").hide()
+			$("#ScreenAfterMainView").show()
+		});
+	}
+	goBack();
+	
+
 };

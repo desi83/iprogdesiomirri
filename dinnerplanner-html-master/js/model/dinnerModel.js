@@ -1,9 +1,7 @@
 //DinnerModel Object constructor
 var DinnerModel = function() {
 	var specMenu = [];
-	var fullMenu = [];
-	var numberOfGuests = 4;
- 	var currentDish = 100;
+	var numberOfGuests = 1;
  	var pendingDishes = [];
  	var observers = [];
 
@@ -59,11 +57,8 @@ var DinnerModel = function() {
 
 	//Returns all the dishes on the menu.
 	this.getFullMenu = function() {
-		for (i = 0; i < specMenu.length; i++) { //loopar igenom varje maträtt som finns i menyn
-			var dish = this.getDish(specMenu[i].id); // sparar ner rätterna som finns i variabeln dish
-			fullMenu.push(dish); // lägger till rätten i menyn
-		}
-	return fullMenu;
+		console.log(specMenu)
+		return specMenu;
 	}
 
 
@@ -85,8 +80,10 @@ var DinnerModel = function() {
 		var specPrice = 0;
 		ingredient = [];
 		ingredient.push(this.getDish(id).ingredients);
-		for(key in ingredient){
-			specPrice += ingredient[key].price;
+		var dish = ingredient[0];
+		for(key in dish){
+			specPrice += dish[key].price;
+
 		}
 		specPrice = specPrice*numberOfGuests;
 		return specPrice;
@@ -95,8 +92,9 @@ var DinnerModel = function() {
 	this.getTotalMenuPrice = function() {
 		//TODO Lab 2
 		var totalMenuPrice = 0;
-		for(key = 0; key < specMenu.length; key++){
-			totalMenuPrice += this.getDishPrice(specMenu[key]);
+		console.log("specMenu", specMenu)
+		for(key in specMenu){
+			totalMenuPrice += this.getDishPrice(specMenu[key].id);
 		}
     return totalMenuPrice;
 	}
@@ -104,20 +102,25 @@ var DinnerModel = function() {
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2 
-		var addDish = this.getDish(id);
+		var dishToAdd = this.getDish(id);
 		if (specMenu.length >= 1) {
-			for (menu = 0; menu < specMenu.length; menu++){
+			var dishExist = false;
+			for (menu in specMenu){
 				var dish = specMenu[menu];
-				if (dish.type == addDish.type){
-					this.removeDishFromMenu(addDish.id);
-				}
-				else{
-					specMenu.push(addDish);
+				if (dish.id == dishToAdd.id) {
+					dishExist = true;
+					this.removeDishFromMenu(dishToAdd.id);
+					specMenu.push(dishToAdd);
+
 				}
 			}
+			if(dishExist == false) {
+				console.log("kommer in här igen")
+				specMenu.push(dishToAdd);
+			}
 		}
-		else{
-			specMenu.push(addDish);
+		else {
+			specMenu.push(dishToAdd);
 		}
 	return specMenu;
 	this.notifyObservers(); //ska senare skicka med ett objekt

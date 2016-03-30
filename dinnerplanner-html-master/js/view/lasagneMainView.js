@@ -12,7 +12,8 @@ var LasagneMainView = function (container, model) {
 		imagesStr = imagesStr + '<div class="col-md-5">'
 		+ '<text style="font-size: 30px;">'+dish.name+'</text></br>'
 		+ '<img src="'+'images/'+dish.image+'"  alt="'+dish.name+'" style="width: 136px; height: 140px;"></img>'	 
-		+ '<p class="text-justify description">'+dish.description+'</p></div>';			
+		+ '<p class="text-justify description">'+dish.description+'</p>'
+		+ '<button id="backButton" type="button" class="btn btn-warning" style="margin-top: 20px;">Go Back</button></div>';			
 		return imagesStr;
 	}
 	//getDishes(100);
@@ -20,7 +21,6 @@ var LasagneMainView = function (container, model) {
 
 	this.numbOfGuests = container.find("#numbOfGuests");
 	this.numbOfGuests.html(model.getNumberOfGuests());
-	var guests = (model.getNumberOfGuests());
 
 	this.allIngredients = container.find("#allIngredients");
 
@@ -28,6 +28,7 @@ var LasagneMainView = function (container, model) {
 	var ingredientList = "";
 	var getIngredients = function () {
 		var dish = model.getPendingDish();
+		var guests = (model.getNumberOfGuests());
 		var ingredientList = "";
 		for(var i=0; i < dish.ingredients.length; i++){
 		ingredientList = ingredientList + '<tr>'
@@ -46,8 +47,9 @@ var LasagneMainView = function (container, model) {
 		this.dishInfo.html(getDishes());
 		this.allIngredients.html(getIngredients());
 		this.specPrice = container.find("#specPrice");
-		var dish = model.getPendingDish().id;
-		this.specPrice.html(model.getDishPrice(dish));
+		console.log("update lasagne")
+		var dishTwo = model.getPendingDish().id;
+		this.specPrice.html(model.getDishPrice(dishTwo));
 
 
 	};
