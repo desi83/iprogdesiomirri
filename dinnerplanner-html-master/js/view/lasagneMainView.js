@@ -12,8 +12,7 @@ var LasagneMainView = function (container, model) {
 		imagesStr = imagesStr + '<div class="col-md-5">'
 		+ '<text style="font-size: 30px;">'+dish.name+'</text></br>'
 		+ '<img src="'+'images/'+dish.image+'"  alt="'+dish.name+'" style="width: 136px; height: 140px;"></img>'	 
-		+ '<p class="text-justify description">'+dish.description+'</p>'
-		+ '<button id="backButton" type="button" class="btn btn-warning" style="margin-top: 20px;">Go Back</button></div>';			
+		+ '<p class="text-justify description">'+dish.description+'</p></div>';			
 		return imagesStr;
 	}
 	//getDishes(100);
@@ -42,6 +41,7 @@ var LasagneMainView = function (container, model) {
 	//getIngredients(100);
 	//this.allIngredients.html(ingredients);
 	$("#confirmButton").append('<button id="confirmButton" type="button" class="btn btn-warning" style="margin-top: 20px;">Confirm Dish</button>');
+	$("#backButton").append('<button id="backButton" type="button" class="btn btn-warning" style="margin-top: 20px; margin-left:950px; padding-right: 10px; padding-left: 10px; ">Go Back</button>');
 
 	this.update = function() {
 		this.dishInfo.html(getDishes());

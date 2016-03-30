@@ -12,10 +12,12 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 	var imagesStr = "";
 	var getDishes = function () {
 		// body...
-		menuType = (model.getFullMenu()); //alla ids för våra dishes
-		console.log(menuType)
-		for (var i=0; i < menuType.length; i++){ 
-			var dish = menuType[i];
+		var fullMenu = model.getFullMenu();
+		console.log(fullMenu)
+		imagesStr = "";
+		for (var i=0; i < fullMenu.length; i++){ 
+			console.log("hej från viewsix")
+			var dish = fullMenu[i];
 			var dishprice = model.getDishPrice(dish.id);
 			imagesStr = imagesStr + '<div class="col-md-2 ">'
 			 + '<img src="'+'images/'+dish.image+'"  alt="'+dish.name+'" style="width: 136px; height: 140px;    border-top: 2px solid black;   border-left: 2px solid black;   border-right: 2px solid black;">'
@@ -27,6 +29,7 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 	}
 	
 this.update = function() {
+	console.log("ViewSix")
 	getDishes();
 	this.dishInfoViewSix.html(imagesStr);
 	this.totalMenuPrice = container.find("#priceee");

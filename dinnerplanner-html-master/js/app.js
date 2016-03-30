@@ -13,11 +13,11 @@ $(function() {
 	var screenAfterMainView = new ScreenAfterMainView($("#ScreenAfterMainView"), model);
 	var screenAfterController = new ScreenAfterController(screenAfterMainView, exampleView, model);
 
-	var sidebarController = new SidebarController(exampleView, model);
-
-
 	var viewSix = new ViewSix($("#ViewSix"), model);
 	var sixController = new SixController(viewSix, model);
+
+	var sidebarController = new SidebarController(exampleView, viewSix, model);
+
 
 	var viewSeven = new ViewSeven($("#ViewSeven"), model);
 

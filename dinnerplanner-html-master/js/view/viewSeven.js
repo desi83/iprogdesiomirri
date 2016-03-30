@@ -27,10 +27,10 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 		}
 		return imagesStr;
 	}
-	getDishes();
-	this.dishInfoList.html(imagesStr);
 
 	this.update = function(obj) {
+		getDishes();
+		this.dishInfoList.html(imagesStr);
 	};
 	model.addObserver(this);
 }
