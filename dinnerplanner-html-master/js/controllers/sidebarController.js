@@ -3,7 +3,7 @@ var SidebarController = function(view, viewSix, model) {
 	var addGuest = function() {
 		$("#up").click(function(){
 		model.setNumberOfGuests(1);
-		view.update(numberOfGuests);
+		view.update();
 		});
 	}
 
@@ -12,7 +12,7 @@ var SidebarController = function(view, viewSix, model) {
 	var removeGuest = function() {
 		$("#down").click(function(){
 		model.setNumberOfGuests(-1);
-		view.update(numberOfGuests);
+		view.update();
 		});
 	}
 
