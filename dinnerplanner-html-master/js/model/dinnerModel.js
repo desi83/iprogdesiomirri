@@ -148,7 +148,7 @@ var DinnerModel = function() {
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
 	this.getAllDishes = function (category, filter, cb) {
-	    var apiKey = "0OV23011kU7B3VVVgxTTTIfdNXeTI3us";
+	    var apiKey = "Li5k9EKcwy83lOzY9W1uCa0K08ZT9K2S";
 	    var type = category;
 	    var searchword = filter;
 	    // if (filter === ""){
@@ -201,7 +201,7 @@ var DinnerModel = function() {
 
 	//function that returns a dish of specific ID
 	this.getDish = function (id) {
-	  	var apiKey = "F088t4s6QGI5T92W3Nwiju8jFU52J8SP";
+	  	var apiKey = "Li5k9EKcwy83lOzY9W1uCa0K08ZT9K2S";
 	  	var recipeID = id;
 	  	var url = "http://api.bigoven.com/recipe/" + recipeID + "?&api_key=" + apiKey + "&pg=1&rpp=125";
 		this.dishes = function () {

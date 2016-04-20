@@ -13,7 +13,7 @@ var ScreenAfterController = function(view, sidebarview, model) {
 	});
 
 	var selectDish = function() {
-		$(".dishplupp").on('click', '.dish-container', function(){
+	$('#dishImage').on('click', '.image', function(){
 			console.log("inne i selectDish")
 			var id = $(this).attr('id'); //hämtar attributet id från den dishen vi har klickat på
 			model.addPendingDish(id);
