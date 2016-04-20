@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
 
   </head>
-
+</body>
   <!-- HOME -->
 <div class="container-fluid" id="header">
 	<div style="background-image: url("http://photo.elsoar.com/wp-content/images/Healthy-Organic-Vegetables-on-a-Wood-Background.jpg");
@@ -63,7 +63,6 @@
 					<div class="col-md-6" style="font-size: 12px; text-align: right;">Cost</div>
 				</div>
 				<div id="addedDishes"></div>
-				<button type="button" id="dishID" class="btn btn-default btn-xs remove" style="background-color: #B40404; border-radius: 15px; margin-left: 175px; margin-top: -20px;"><span class="glyphicon glyphicon-remove"></span></button>
 				<div class="row" style="color: #B40404; margin-left: 1px; margin-right: 1px;">'
 					<div class="col-md-4" id="pendingDish" style="font-size: 12px; text-align: right; padding-left: 75px;">Pending</div>
 					<div class="col-md-4" id="pendingPrice" style="font-size: 12px; text-align: right; padding-left: 50px;">0.00</div>
@@ -85,15 +84,15 @@
   				<button id ="buttonSearch" type="submit" class="btn btn-default" style=" border: 2.5px solid black; margin-left: -26px; background-color: coral;">Search</button>
       			<select class="form-control" id="typeSearch" style=" border: 1px solid black; margin-left: 30px; width: 300px;">
       				<option>Select Type</option>
-      				<option value="starter">Starter</option>
-      				<option value="main dish">Main</option>
-      				<option value="dessert">Dessert</option>
+      				<option value="Appetizers">Starter</option>
+      				<option value="Main Dish">Main</option>
+      				<option value="Desserts">Dessert</option>
       			</select>
       			</form>
       		</div>
-			<div class="row info" id="dishList" style=" padding-top: 100px; padding-left: 100px;">
-				<span id="dishImage"></span>
-			</div>
+				<p id="errorMessage"></p>
+				<div class="dishImage row" id="dishImage"></div>
+
 		</div>
 
 
@@ -185,6 +184,10 @@
 	<span id="dishInfoList"></span>
 </div>
 
+	  	<div class="col-md-10" id="loadingView" style="display:none">
+	  		Loading ...
+	  	</div>
+
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Bootstrap JavaScript, needed if you want for instance tabs, models, popovers etc. -->
@@ -200,6 +203,7 @@
 	<script src="js/view/lasagneMainView.js"></script>
 	<script src="js/view/viewSix.js"></script>
 	<script src="js/view/viewSeven.js"></script>
+	<script src="js/view/loadingView.js"></script>	
 
 
 	<!-- The controllers -->

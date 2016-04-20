@@ -2,29 +2,53 @@ var ScreenAfterMainView = function (container, model) {
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
-console.log("hej dish")
-	this.dishImage = container.find("#dishImage");
-
-	var imagesStr = "";
-	var getDishes = function (type, filter) {
+	var allDishImage = [];
+//	var imagesStr = "";
+	var getDishes = function (category, filter) {
 		//console.log($("#dishImage"));
-		var menuType = model.getAllDishes(type, filter);
-		imagesStr = "";
-		for (var i=0; i < menuType.length; i++){ 
-			var dish = menuType[i];
-			imagesStr = imagesStr + '<div class="image col-md-2" id='+dish.id+'>'
-			 + '<center><img src="'+'images/'+dish.image+'"  alt="'+dish.name+'" style="width: 136px; height: 140px;"></img>'
-			 + '<button class="dish" style=" border: 1px solid black; width: 136px;">'+dish.name+'</button>'	 
-			 + '<p class="text-justify description">'+dish.description+'</p></div></center>';			
+		var dishResults = null;
+		model.getAllDishes(category, filter, function(dishes) {
+			console.log(dishes)
+			if (dishes.ResultCount === 0) {
+				dishResults = false;
+				this.errorMessage = container.find("#errorMessage");
+				this.errorMessage.html("We could not find what you were searching for. Please try again.");
+			}
+			else {
+				dishResults = true;
+				for (var i = 0; i < dishes.Results.length; i++) {
+					var dish = dishes.Results[i];
+					var imageDiv = document.createElement('div');
+					imageDiv.className = "image col-md-2"; //lägger till classname
+					imageDiv.id = dish.RecipeID;
+					imageDiv.innerHTML = '<center><img src="'+String(dish.ImageURL)+'"  alt="'+String(dish.Title)+'" style="width: 136px; height: 140px;"></img>'
+					 + '<button class="dishplupp" style=" border: 1px solid black; width: 136px;">'+String(dish.Title)+'</button>'	 
+					 + '<p class="text-justify description">'+String(dish.Subcategory)+'</p></center>';
+
+					 allDishImage.push(imageDiv);
+				}		
+			}
+		this.dishContainer = container.find("#dishImage");		
+		this.dishContainer.empty();
+		if (dishResults === false){
+			console.log("hej")
 		}
-		return imagesStr;
-	}
+		else {
+			console.log(allDishImage.length)
+			for (var j = 0; j < allDishImage.length; j++) {
+				console.log("här är den iaf")
+					//console.log("alldishes[j]",allDishes[j]);
+				this.dishContainer.append(allDishImage[j]);
+			}
+		}
+	});
+}
  //ska skicka vidare det inmatade värdet från serach(fixas i controllern)
 	//getDishes("main dish", "meat balls");
 
-	this.updateSearch = function(type, filter) {
-		this.dishImage.empty();
-		this.dishImage.html(getDishes(type, filter));
+	this.updateSearch = function(category, filter) {
+		allDishImage = [];
+		getDishes(category, filter);
 
 	};
 

@@ -7,20 +7,20 @@ var ScreenAfterController = function(view, sidebarview, model) {
 		return false;
 	});
 
-$("#typeSearch").change(function() {
-	view.updateSearch($(this).val(), $("#searchWord").val());
-	selectDish();
-});
+	$("#typeSearch").change(function() {
+		view.updateSearch($(this).val(), $("#searchWord").val());
+		selectDish();
+	});
 
 	var selectDish = function() {
-		
-		$(".image").click(function(){
-		var id = $(this).attr('id');
-		model.addPendingDish(id);
-		$("#ScreenAfterMainView").hide();
-		$("#ViewSix").hide();
-		$("#LasagneMainView").show();
-		sidebarview.updatePending();
+		$(".dishplupp").on('click', '.dish-container', function(){
+			console.log("inne i selectDish")
+			var id = $(this).attr('id'); //hämtar attributet id från den dishen vi har klickat på
+			model.addPendingDish(id);
+			$("#ScreenAfterMainView").hide();
+			$("#ViewSix").hide();
+			$("#LasagneMainView").show();
+			sidebarview.updatePending();
 		})
 
 	}

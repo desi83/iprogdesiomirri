@@ -2,8 +2,6 @@
 var ViewSix = function (container, model) {
 // Get all the relevant elements of the view (ones that show data
   // and/or ones that responed to interaction)
-this.numberOfGuests = container.find("#numOfGuests");
-this.numberOfGuests.html(model.getNumberOfGuests());
 	
 	// Get all the relevant elements of the view (ones that show data
   	// and/or ones that responed to interaction)
@@ -30,6 +28,8 @@ this.numberOfGuests.html(model.getNumberOfGuests());
 	
 this.update = function() {
 	console.log("ViewSix")
+	this.numberOfGuests = container.find("#numOfGuests");
+	this.numberOfGuests.html(model.getNumberOfGuests());
 	getDishes();
 	this.dishInfoViewSix.html(imagesStr);
 	this.totalMenuPrice = container.find("#priceee");

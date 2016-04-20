@@ -29,13 +29,19 @@ var SidebarController = function(view, viewSix, model) {
 	}
 	confirmDinner();
 
-	var removeDish = function(){
-		$(".btn btn-default btn-xs remove").click(function(){
+/*	var removeDish = function(){
+		$("#remove").click(function(){
 			console.log("removeDish")
 			var id = $(this).attr('id');
-			model.removeDishFromMenu(id);
-			view.update();
+
 		});
 	}
-	removeDish();
+	removeDish();*/
+
+	$('#addedDishes').on('click', '.addDishesRow', function(){
+		var id = $(this).attr('id');		
+		model.removeDishFromMenu(id);
+		view.update();
+
+	});
 }

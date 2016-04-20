@@ -17,8 +17,9 @@ $(function() {
 	var sixController = new SixController(viewSix, model);
 
 	var sidebarController = new SidebarController(exampleView, viewSix, model);
+//	var removeDishController = new RemoveDishController(exampleView, model);
 
-
+	var loadingView = new LoadingView($("#LoadingView"), model);
 	var viewSeven = new ViewSeven($("#ViewSeven"), model);
 
 //	var lasagneController = new LasagneController(lasagneMainView, model);
