@@ -1,6 +1,7 @@
 var HomeController = function(view, model) {
 	$("#HomeView").show()
 	$("#ExampleView").hide()
+	$("#LoadingView").hide()
 	$("#ScreenAfterMainView").hide()
 	$("#LasagneMainView").hide()
 	$("#ViewSix").hide()

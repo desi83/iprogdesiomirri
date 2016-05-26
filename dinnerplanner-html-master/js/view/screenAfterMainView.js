@@ -31,14 +31,11 @@ var ScreenAfterMainView = function (container, model) {
 		this.dishContainer = container.find("#dishImage");		
 		this.dishContainer.empty();
 		if (dishResults === false){
-			console.log("hej")
 		}
 		else {
-			console.log(allDishImage.length)
-			for (var j = 0; j < allDishImage.length; j++) {
-				console.log("här är den iaf")
+			for (var i = 0; i < allDishImage.length; i++) {
 					//console.log("alldishes[j]",allDishes[j]);
-				this.dishContainer.append(allDishImage[j]);
+				this.dishContainer.append(allDishImage[i]);
 			}
 		}
 	});

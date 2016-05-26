@@ -1,4 +1,4 @@
-var ScreenAfterController = function(view, sidebarview, model) {
+var ScreenAfterController = function(view, sidebarview, lasagnemainview, model) {
 
 	$("#buttonSearch").click(function(){
 		view.updateSearch($("#typeSearch").val(), $("#searchWord").val());
@@ -14,13 +14,13 @@ var ScreenAfterController = function(view, sidebarview, model) {
 
 	var selectDish = function() {
 	$('#dishImage').on('click', '.image', function(){
-			console.log("inne i selectDish")
-			var id = $(this).attr('id'); //hämtar attributet id från den dishen vi har klickat på
-			model.addPendingDish(id);
+			 //hämtar attributet id från den dishen vi har klickat på
+			var id = $(this).attr('id');
 			$("#ScreenAfterMainView").hide();
 			$("#ViewSix").hide();
 			$("#LasagneMainView").show();
-			sidebarview.updatePending();
+			sidebarview.updatePending(id);
+			lasagnemainview.update(id);
 		})
 
 	}
@@ -28,14 +28,13 @@ var ScreenAfterController = function(view, sidebarview, model) {
 	selectDish();
 
 	var confirmDish = function() {
-		
-		$("#confirmButton").click(function(){
-			var id = model.getPendingDish().id;
-			model.removePendingDish();
+		$("#dishInfo").on('click', '.specDish', function(){
+			var id = $(this).attr('id');
+			console.log(id)
 			model.addDishToMenu(id);
-			sidebarview.update();
 			$("#LasagneMainView").hide();
 			$("#ScreenAfterMainView").show();
+			sidebarview.update();
 			});
 	}
 
@@ -43,13 +42,19 @@ var ScreenAfterController = function(view, sidebarview, model) {
 
 	var goBack = function() {
 		$("#backButton").click(function(){
-			var id = model.getPendingDish().id;
-			model.removePendingDish();
 			$("#LasagneMainView").hide();
 			$("#ScreenAfterMainView").show();
+			sidebarview.update();
 		});
 	}
 	goBack();
-	
+
+	$(document).ajaxStart(function() {
+		$(".loading").show();
+	});
+	$( document ).ajaxStop(function() {
+		$( ".loading" ).hide();
+	});
+
 
 };

@@ -64,14 +64,15 @@
 				</div>
 				<div id="addedDishes"></div>
 				<div class="row" style="color: #B40404; margin-left: 1px; margin-right: 1px;">'
-					<div class="col-md-4" id="pendingDish" style="font-size: 12px; text-align: right; padding-left: 75px;">Pending</div>
-					<div class="col-md-4" id="pendingPrice" style="font-size: 12px; text-align: right; padding-left: 50px;">0.00</div>
+					<!-- <div class="col-md-4" id="pendingDish" style="font-size: 12px; text-align: right; padding-left: 75px;">Pending</div>
+					<div class="col-md-4" id="pendingPrice" style="font-size: 12px; text-align: right; padding-left: 50px;">0.00</div> -->
 				</div>
 				<div class="row" style="color: #B40404; border-top: 2px solid black; margin-top: 6px; margin-left: 1px; margin-right: 1px;">
 					<div class="col-md-12" style="margin-top: 20px; font-size: 12px; text-align: right;">SEK <text id="totalPrice"></text></div></div>
 				<button class ="confirm" id="confirmDinner" type="button" class="btn btn-default" style="background-color:Moccasin; border: 1px solid black; margin-left: 30px; margin-top: 20px;">Confirm Dinner</button>
 
 	</div>
+
 
 <!-- SelectDish/ScreenAfter -->
 
@@ -94,32 +95,33 @@
 				<div class="row" id="dishImage"></div>
 
 		</div>
-
-
-
 <!-- Lasagne -->
 
 		<div id="LasagneMainView">
 			<div class="row" style="background-color: NavajoWhite; max-height: 80px; min-height: 30px; border-bottom: 2px solid black; padding-top: 5px; padding-bottom: 60px;">
 				<span id="backButton"></span>
-		</div>
+			</div>
 
 			<span id="dishInfo"></span>
 
 			<div class="col-md-5"style="border:2px solid black; background-color:Moccasin; padding-bottom: 20px;">
+				<div id="confirmButton" style="padding-right: 70px;"></div>
 				<h5 style="text-transform: uppercase;">Ingredients for <text id="numbOfGuests"></text> people</h5>
 				<div class="ingredients" style="border-top: 2px solid black; padding-top: 20px; padding-bottom: 20px;">
 					<table>
 					<span id="allIngredients"></span> 
 
   					<tr style="border-top: 2px solid black;">
-						<td id="confirmButton" style="padding-right: 70px;"></td>
 						<td style="padding-left: 80px; padding-right: 10px;">SEK</td>
 						<td id="specPrice"><td>
 					</tr>
 				</table>
 			</div>
 		</div>
+	</div>
+
+		<div class="loading col-md-10" id="LoadingView">
+		<p>Loading ...</p>
 	</div>
 </div>
 </div>
@@ -174,19 +176,15 @@
 
 	<div class="row" style="background-color: NavajoWhite; padding-bottom: 5px; border:2px solid black; padding-top:5px;">
 		<div class="col-md-6">
-			<h3><b>My Dinner: 4 people<b><h3>
+			<h3><b>My Dinner: <span id="numOfGuests" > 4 </span> people<b><h3>
 		</div>
 		<div class="col-md-6" style="padding-top: 15px;">
-				<button type="button" class="btn btn-warning btn pull-right" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px;">Go back and edit dinner</button>
+				<button type="button" class="btn btn-warning btn pull-right" id="lastBackButton" style="border-top-left-radius: 100px; border-bottom-left-radius: 100px;">Go back and edit dinner</button>
 		</div>
 	</div>
 
 	<span id="dishInfoList"></span>
 </div>
-
-	  	<div class="col-md-10" id="loadingView" style="display:none">
-	  		Loading ...
-	  	</div>
 
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -211,6 +209,7 @@
 	<script src="js/controllers/sidebarController.js"></script>
 	<script src="js/controllers/screenAfterController.js"></script>
 	<script src="js/controllers/sixController.js"></script>
+	<script src="js/controllers/sevenController.js"></script>
 
   </body>
 </html>

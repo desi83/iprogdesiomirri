@@ -9,18 +9,19 @@ $(function() {
 
 
 	var exampleView = new ExampleView($("#ExampleView"), model);
+	var loadingView = new LoadingView($("#LoadingView"), model);
 	var lasagneMainView = new LasagneMainView($("#LasagneMainView"), model);
 	var screenAfterMainView = new ScreenAfterMainView($("#ScreenAfterMainView"), model);
-	var screenAfterController = new ScreenAfterController(screenAfterMainView, exampleView, model);
+	var screenAfterController = new ScreenAfterController(screenAfterMainView, exampleView, lasagneMainView, model);
 
 	var viewSix = new ViewSix($("#ViewSix"), model);
-	var sixController = new SixController(viewSix, model);
+	var viewSeven = new ViewSeven($("#ViewSeven"), model);
+	var sixController = new SixController(viewSix, viewSeven, model);
 
 	var sidebarController = new SidebarController(exampleView, viewSix, model);
 //	var removeDishController = new RemoveDishController(exampleView, model);
 
-	var loadingView = new LoadingView($("#LoadingView"), model);
-	var viewSeven = new ViewSeven($("#ViewSeven"), model);
+	var sevenController = new SevenController(viewSeven, model);
 
 //	var lasagneController = new LasagneController(lasagneMainView, model);
 

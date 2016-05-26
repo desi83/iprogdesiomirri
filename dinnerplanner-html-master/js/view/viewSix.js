@@ -11,29 +11,33 @@ var ViewSix = function (container, model) {
 	var getDishes = function () {
 		// body...
 		var fullMenu = model.getFullMenu();
-		console.log(fullMenu)
 		imagesStr = "";
+		var totalPrice = 0;
 		for (var i=0; i < fullMenu.length; i++){ 
-			console.log("hej från viewsix")
 			var dish = fullMenu[i];
-			var dishprice = model.getDishPrice(dish.id);
+			var amountOfGuests = model.getNumberOfGuests();			
+			var selectedPrice = 0;
+			for(var j=0; j < dish.Ingredients.length; j++){
+				selectedPrice = selectedPrice + parseInt((dish.Ingredients[j].MetricQuantity)*amountOfGuests);
+			}
 			imagesStr = imagesStr + '<div class="col-md-2 ">'
-			 + '<img src="'+'images/'+dish.image+'"  alt="'+dish.name+'" style="width: 136px; height: 140px;    border-top: 2px solid black;   border-left: 2px solid black;   border-right: 2px solid black;">'
-			 + '<b><p style="text-align: center; background-color: Gainsboro; padding-right: 5px; padding-top: 5px; padding-left: 1px; font-size: 18px; width: 136px;    border-bottom: 2px solid black;    border-top: 2px solid black;   border-left: 2px solid black;   border-right: 2px solid black;">'+dish.name+
+			 + '<img src="'+dish.ImageURL+'"  alt="'+dish.Title+'" style="width: 136px; height: 140px;    border-top: 2px solid black;   border-left: 2px solid black;   border-right: 2px solid black;">'
+			 + '<b><p style="text-align: center; background-color: Gainsboro; padding-right: 5px; padding-top: 5px; padding-left: 1px; font-size: 18px; width: 136px;    border-bottom: 2px solid black;    border-top: 2px solid black;   border-left: 2px solid black;   border-right: 2px solid black;">'+dish.Title+
 			 '</p></b>'
-			 +'<p style="text-align: left;">'+"SEK "+dishprice+'</p></div>';
+			 +'<p style="text-align: left;">'+"SEK "+selectedPrice+'</p></div>';
+			totalPrice += selectedPrice;
 		}
+		this.totalMenuPrice = container.find("#priceee");
+		console.log(totalPrice)
+		this.totalMenuPrice.html(totalPrice);
 		return imagesStr;
 	}
 	
 this.update = function() {
-	console.log("ViewSix")
 	this.numberOfGuests = container.find("#numOfGuests");
 	this.numberOfGuests.html(model.getNumberOfGuests());
 	getDishes();
 	this.dishInfoViewSix.html(imagesStr);
-	this.totalMenuPrice = container.find("#priceee");
-	this.totalMenuPrice.html(model.getTotalMenuPrice());
 	};
 
 	model.addObserver(this);

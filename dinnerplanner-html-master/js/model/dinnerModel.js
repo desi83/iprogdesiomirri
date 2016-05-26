@@ -19,7 +19,7 @@ var DinnerModel = function() {
 
 	this.setNumberOfGuests = function(num) {
 		numberOfGuests = numberOfGuests + num;
-		this.notifyObservers(); //ska senare skicka med ett objekt
+		this.notifyObservers();
 	}
 
 	// should return 
@@ -40,15 +40,16 @@ var DinnerModel = function() {
 	return menuType;
 	}
 
-	this.addPendingDish = function(id) {
+/*	this.addPendingDish = function(id) {
 		var pendingDish = this.getDish(id);
-		console.log(pendingDish)
 		pendingDishes.push(pendingDish);
 		this.notifyObservers(id);
 	}	
 
 	this.removePendingDish = function(){
+		pendingDishes = [];
 		pendingDishes.pop(); //Tar bort det sista elemntet
+		console.log(pendingDishes)
     }
 
 	this.getPendingDish = function() {
@@ -56,7 +57,7 @@ var DinnerModel = function() {
 		return pendingDishes[0];
 	}
 
-	//Returns all the dishes on the menu.
+	//Returns */
 	this.getFullMenu = function() {
 		console.log(specMenu)
 		return specMenu;
@@ -71,91 +72,97 @@ var DinnerModel = function() {
 			var ingredient = this.getDish(i).ingredients; //sparar ner ingredienserna till de dishes vi fått ut
 			for (var key in ingredient){ //
 				allIngredients.push(ingredient[key]);
-				console.log(allIngredients[key].name)
 		}
 			}
 		return allIngredients;
 	}
 
+//gets the price for one dish
 	this.getDishPrice = function(id){
 		var specPrice = 0;
 		ingredient = [];
-		ingredient.push(this.getDish(id).ingredients);
-		var dish = ingredient[0];
-		for(key in dish){
-			specPrice += dish[key].price;
+		this.getDish(id, function(dishes){
+			ingredient.push(dishes.Ingredients);
+			var dish = ingredient[0];
+			for(key in dish){
+				specPrice = specPrice + dish[key].MetricQuantity;
 
-		}
-		specPrice = specPrice*numberOfGuests;
-		return specPrice;
+			}
+			specPrice = specPrice*numberOfGuests;
+			console.log(specPrice)
+			return specPrice;
+		});
 	}
 
 	this.getTotalMenuPrice = function() {
 		//TODO Lab 2
 		var totalMenuPrice = 0;
-		console.log("specMenu", specMenu)
 		for(key in specMenu){
-			totalMenuPrice += this.getDishPrice(specMenu[key].id);
+			console.log(specMenu[key].RecipeID)
+			console.log(this.getDishPrice(specMenu[key].RecipeID))
+			totalMenuPrice += this.getDishPrice(specMenu[key].RecipeID);
+			console.log("inne i loopen totalMenuPrice: ", totalMenuPrice)
 		}
+		console.log("totalMenuPrice: ", totalMenuPrice)
     return totalMenuPrice;
 	}
 	//Adds the passed dish to the menu. If the dish of that type already exists on the menu
 	//it is removed from the menu and the new one added.
 	this.addDishToMenu = function(id) {
 		//TODO Lab 2 
-		var dishToAdd = this.getDish(id);
-		if (specMenu.length >= 1) {
-			var dishExist = false;
-			for (menu in specMenu){
-				var dish = specMenu[menu];
-				if (dish.id == dishToAdd.id) {
-					dishExist = true;
-					this.removeDishFromMenu(dishToAdd.id);
+		this.getDish(id, function(dishes){
+			var dishToAdd = dishes;
+			if (specMenu.length >= 1) {
+				var dishExist = false;
+				for (menu in specMenu){
+					var dish = specMenu[menu];
+					if (dish.RecipeID == dishToAdd.RecipeID) {
+						dishExist = true;
+						specMenu.splice(menu, 1, dishToAdd);;
+					}
+				}
+				if(dishExist == false) {
 					specMenu.push(dishToAdd);
-
 				}
 			}
-			if(dishExist == false) {
-				console.log("kommer in här igen")
+			else {
 				specMenu.push(dishToAdd);
 			}
-		}
-		else {
-			specMenu.push(dishToAdd);
-		}
-	return specMenu;
-	this.notifyObservers(); //ska senare skicka med ett objekt
+		console.log("specMenu: ",specMenu)
+		return specMenu;
+		});
+	this.notifyObservers();
 	}
 
 	//Removes dish from menu
 	this.removeDishFromMenu = function(id) {
-		var removeDish = this.getDish(id);
-		for (menu = 0; menu < specMenu.length; menu++){
-			var dish = specMenu[menu];
-			if(removeDish.id == dish.id){ //kollar om den rätten man vill ta bort faktiskt finns i menyn, om den gör det f
-				specMenu.splice(menu, 1);
+		this.getDish(id, function(dishes){
+			var removeDish = dishes;
+			for (menu = 0; menu < specMenu.length; menu++){
+				var dish = specMenu[menu];
+				if(removeDish.RecipeID == dish.RecipeID){ //kollar om den rätten man vill ta bort faktiskt finns i menyn, om den gör det f
+					specMenu.splice(menu, 1);
+				}
+				else if(removeDish.Category == dish.Category){ //kollar om den rätten man vill ta bort faktiskt finns i menyn, om den gör det f
+					specMenu.splice(menu, 1);
+				}
 			}
-			else if(removeDish.type == dish.type){ //kollar om den rätten man vill ta bort faktiskt finns i menyn, om den gör det f
-				specMenu.splice(menu, 1);
-			}
-		}
-		return specMenu;
-		this.notifyObservers(); //ska senare skicka med ett objekt
-
+			return specMenu;
+			this.notifyObservers(); //ska senare skicka med ett objekt
+		});
 	}
 
 	//function that returns all dishes of specific type (i.e. "starter", "main dish" or "dessert")
 	//you can use the filter argument to filter out the dish by name or ingredient (use for search)
 	//if you don't pass any filter all the dishes will be returned
-	this.getAllDishes = function (category, filter, cb) {
-	    var apiKey = "Li5k9EKcwy83lOzY9W1uCa0K08ZT9K2S";
-	    var type = category;
+	this.getAllDishes = function (Category, filter, cb) {
+	    var apiKey = "e1H9dDZsH5J3PY6j89PK326LBwN97iS6";
+	    var type = Category;
 	    var searchword = filter;
 	    // if (filter === ""){
 	    //   var url = "http://api.bigoven.com/recipes?&api_key=" + apiKey + "&include_primarycat=" + type + "&pg=1&rpp=125";
 	    // }
-	    if (typeof filter === undefined) {
-	    	console.log("den här funkar")
+	    if (filter === "") {
 	      	var url = "http://api.bigoven.com/recipes?&api_key=" + apiKey + "&include_primarycat=" + type + "&pg=1&rpp=125";
 	    }
 	    else {
@@ -172,8 +179,7 @@ var DinnerModel = function() {
 		    	alert("Something's wrong!");
 		    },
 		    complete: function(data) {
-		    	$("#loadingView").html("The loading message works!!");
-		    	$("#loadingView").hide();
+		    	$("#LoadingView").hide();
 		    }
 	    });
 	}
@@ -200,28 +206,22 @@ var DinnerModel = function() {
 	// }
 
 	//function that returns a dish of specific ID
-	this.getDish = function (id) {
-	  	var apiKey = "Li5k9EKcwy83lOzY9W1uCa0K08ZT9K2S";
+	this.getDish = function (id, cb) {
+	  	var apiKey = "e1H9dDZsH5J3PY6j89PK326LBwN97iS6";
 	  	var recipeID = id;
 	  	var url = "http://api.bigoven.com/recipe/" + recipeID + "?&api_key=" + apiKey + "&pg=1&rpp=125";
-		this.dishes = function () {
 	    	var dish = "";
 		    $.ajax({
 		      	type: "GET",
 		      	dataType:'json',
 		      	cache: false,
-		      	async: false,
+		      	async: true,
 		      	url: url,
-		      	success: function (data) {
-		      		dish = data;	
-		      	},
+		      	success: cb,
 		      	error: function(data) {
 		      		alert("Something's wrong!");
 		      	}
 		    });
-		// if result === undefined then...! (felkontroll)
-		return dish;
-	}
 }
 
 	this.getSpecificDish = function (id) {

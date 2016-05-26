@@ -11,8 +11,14 @@ var SidebarController = function(view, viewSix, model) {
 
 	var removeGuest = function() {
 		$("#down").click(function(){
-		model.setNumberOfGuests(-1);
-		view.update();
+			var guest = model.getNumberOfGuests();
+			if (guest <= 1){
+				alert("You have to be at least one guest")
+			}
+			else {
+				model.setNumberOfGuests(-1);
+				view.update();
+			}
 		});
 	}
 
